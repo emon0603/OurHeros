@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.OurHeros" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/red</item>
+
+
+    </style>
+
+    <style name="toolbarMenuTheme">
+        <item name="android:colorBackground">@color/red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="InactiveText">
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+
+
+    <style name="Theme.OurHeros" parent="Base.Theme.OurHeros" />
+</resources>
