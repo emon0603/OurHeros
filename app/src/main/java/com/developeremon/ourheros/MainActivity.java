@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +102,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if (item.getItemId() == R.id.addinfobt) {
+
+                if (item.getItemId() == R.id.homenav) {
+
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fram_lay, new Home() );
+                    fragmentTransaction.commit();
+                    //Toast.makeText(MainActivity.this, "Hello", Toast.LENGTH_SHORT).show();
+
+
+                }else if (item.getItemId() == R.id.addinfobt) {
 
                     drawerLayout.closeDrawer(GravityCompat.START);
                     FragmentManager fragmentManager = getSupportFragmentManager();
@@ -149,9 +162,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if (item.getItemId() == R.id.Home){
+                if (item.getItemId() == R.id.Homebott){
 
-
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.fram_lay, new Home() );
+                    fragmentTransaction.commit();
 
 
 
@@ -172,9 +188,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }//---- Oncreate Finish------
-
-
-
 
 
 
