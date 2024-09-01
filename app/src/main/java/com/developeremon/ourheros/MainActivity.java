@@ -2,6 +2,8 @@ package com.developeremon.ourheros;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -27,6 +29,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.developeremon.ourheros.network.InternetChangeListerner;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -45,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     private static final String URL = "YOUR_SERVER_URL"; // এখানে আপনার সার্ভার URL দিন
     private RequestQueue requestQueue;
+
+    InternetChangeListerner internetChangeListerner = new InternetChangeListerner();
 
 
 
@@ -194,5 +199,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+    }
+
+    @Override
+    protected void onStart() {
+ 
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(internetChangeListerner, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(internetChangeListerner);
+        super.onStop();
     }
 }

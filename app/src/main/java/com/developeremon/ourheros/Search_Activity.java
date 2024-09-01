@@ -4,6 +4,8 @@ import static com.developeremon.ourheros.List_Fargment.api_url;
 import static java.security.AccessController.getContext;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -36,6 +38,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.developeremon.ourheros.network.InternetChangeListerner;
 import com.google.android.material.card.MaterialCardView;
 import com.squareup.picasso.Picasso;
 
@@ -60,6 +63,8 @@ public class Search_Activity extends AppCompatActivity {
     HashMap<String,String> hashMap ;
     ArrayList< HashMap<String,String> > arrayList = new ArrayList<>();
     MyAdapterall myadapter = new MyAdapterall(arrayList);
+
+    InternetChangeListerner internetChangeListerner = new InternetChangeListerner();
 
 
 
@@ -384,6 +389,18 @@ public class Search_Activity extends AppCompatActivity {
     }
 
 
+    protected void onStart() {
+
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(internetChangeListerner, filter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(internetChangeListerner);
+        super.onStop();
+    }
 
 
 
