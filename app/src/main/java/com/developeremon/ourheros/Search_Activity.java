@@ -55,12 +55,9 @@ public class Search_Activity extends AppCompatActivity {
     ImageView resetbt, backbt;
     ListView searchlist;
     com.airbnb.lottie.LottieAnimationView lottieAnimationView;
-
-    private ArrayAdapter<String> adapter;
-    private List<String> itemList = new ArrayList<>();
-    private List<String> filteredItemList = new ArrayList<>();
-    private RequestQueue requestQueue;
-
+    HashMap<String,String> hashMap ;
+    ArrayList< HashMap<String,String> > arrayList = new ArrayList<>();
+    MyAdapterall myadapter = new MyAdapterall(arrayList);
 
 
 
@@ -79,14 +76,30 @@ public class Search_Activity extends AppCompatActivity {
 
         //------------------------------------------------------------------
 
-        requestQueue = Volley.newRequestQueue(this);
-        fetchInitialData();
 
-        adapter = new ArrayAdapter<>(this, R.layout.search_item, R.id.itemTextView, filteredItemList);
-        searchlist.setAdapter(adapter);
+        hashMap = new HashMap<>();
+        hashMap.put("name", "Emon");
+        arrayList.add(hashMap);
+
+        hashMap = new HashMap<>();
+        hashMap.put("name", "Sabbir");
+        arrayList.add(hashMap);
+
+        hashMap = new HashMap<>();
+        hashMap.put("name", "Siam");
+        arrayList.add(hashMap);
+
+        hashMap = new HashMap<>();
+        hashMap.put("name", "RAkibul");
+        arrayList.add(hashMap);
+
+        hashMap = new HashMap<>();
+        hashMap.put("name", "Jubayer");
+        arrayList.add(hashMap);
 
 
 
+        searchlist.setAdapter(myadapter);
 
         //JsonArrayMethod();
         lottieAnimationView.setVisibility(View.VISIBLE);
@@ -102,7 +115,6 @@ public class Search_Activity extends AppCompatActivity {
             }
         });
 
-
         //===============================================================================================================
         searchbt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -116,7 +128,7 @@ public class Search_Activity extends AppCompatActivity {
 
                 if (s.length() > 0) {
 
-                    filterData(s.toString());
+                    fileList(s.toString());
 
 
                 } else {
@@ -149,99 +161,94 @@ public class Search_Activity extends AppCompatActivity {
     }//---- Oncreate Finish
 
 
-
     //---------------------------------------------------------------------------------------
+
+    class MyAdapterall extends BaseAdapter {
+
+        TextView nametv;
+
+
+        ArrayList<HashMap<String,String>> myarrayList;
+        public MyAdapterall(ArrayList<HashMap<String, String>> arrayList) {
+            this.myarrayList = arrayList;
+        }
+
+
+
+        public void setFilteredList(ArrayList<HashMap<String, String>> filteredList) {
+            this.myarrayList = filteredList;
+            notifyDataSetChanged();
+        }
+
+
+
+
+
+        @Override
+        public int getCount() {
+            return arrayList.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+
+            LayoutInflater layoutInflater = getLayoutInflater();
+            View myview = layoutInflater.inflate(R.layout.search_item, viewGroup,false);
+
+            nametv = myview.findViewById(R.id.itemTextView);
+
+            HashMap <String,String> hashMap = myarrayList.get(i);
+
+            String name = hashMap.get("name");
+
+
+            nametv.setText(name);
+
+
+            //Toast.makeText(getContext(), birthday, Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+            //-------------------------------------------------------------------------------
+
+
+
+            return myview;
+        }
+    }
+
 
     //-----------------------------------------------------------------------------
 
 
-
-    private void fetchInitialData() {
-        String url = api_url; // Replace with your URL
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.GET,
-                url,
-                null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            // Assuming the JSONArray is inside the JSONObject under the key "items"
-                            JSONArray jsonArray = response.getJSONArray("users");
-                            fetchItemDetails(jsonArray);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Handle error
-                    }
-                }
-        );
-
-        requestQueue.add(jsonObjectRequest);
-    }
-
-    private void fetchItemDetails(final JSONArray jsonArray) {
-        // Here we assume each item in the JSONArray is an object containing an "id" or similar to fetch details
-        String url = api_url; // Replace with your URL
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                Request.Method.GET,
-                url,
-                null,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        parseJsonData(response);
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Handle error
-                    }
-                }
-        );
-
-        requestQueue.add(jsonArrayRequest);
-    }
-
-    private void parseJsonData(JSONArray jsonArray) {
-        itemList.clear();
-        filteredItemList.clear();
-
-        for (int i = 0; i < jsonArray.length(); i++) {
-            try {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String itemName = jsonObject.getString("name"); // Replace "name" with your JSON field
-                itemList.add(itemName);
-                filteredItemList.add(itemName);
-            } catch (JSONException e) {
-                e.printStackTrace();
+    private void fileList(String newText) {
+        ArrayList<HashMap<String, String>> arrayList1 = new ArrayList<>();
+        for (HashMap<String, String> detailsItem : arrayList) {
+            if (detailsItem.get("name").toLowerCase().contains(newText.toLowerCase())) {
+                arrayList1.add(detailsItem);
             }
         }
-
-        adapter.notifyDataSetChanged();
-    }
-
-    private void filterData(String query) {
-        filteredItemList.clear();
-        if (query.isEmpty()) {
-            filteredItemList.addAll(itemList);
+        if (arrayList1.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "No Data Found", Toast.LENGTH_SHORT).show();
         } else {
-            for (String item : itemList) {
-                if (item.toLowerCase().contains(query.toLowerCase())) {
-                    filteredItemList.add(item);
-                }
-            }
+            myadapter.setFilteredList(arrayList1);
         }
-        adapter.notifyDataSetChanged();
     }
+
+
 
 
 
