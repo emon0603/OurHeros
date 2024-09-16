@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.AllPeople.ALL_people_ADMIN"
+    android:background="@drawable/main_back"
+    >
+
+    <RelativeLayout
+        android:id="@+id/noticelistlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_marginBottom="@dimen/_100sdp"
+        android:background="@drawable/shadow_back"
+        android:visibility="visible"
+
+        >
+
+
+
+        <ListView
+            android:id="@+id/peoplelist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+
+
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/noinfoTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="কোনো তথ্য পাওয়া যায় নি
+নোটিশ যুক্ত করুন"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_25sdp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:layout_margin="@dimen/_10sdp"
+        android:visibility="gone"
+        />
+
+
+    <ImageView
+        android:id="@+id/peopleadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/notice_add"
+        android:scaleType="centerCrop"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_20sdp"
+        android:backgroundTint="#2F393D"
+        />
+
+
+
+</RelativeLayout>

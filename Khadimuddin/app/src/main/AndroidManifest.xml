@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,7 +18,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Khadimuddin"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".Admin.Expence.Expence_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".People_details"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AllPeople.People_Input_activity"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.AllPeople.ALL_people_ADMIN"
+            android:exported="false" />
+        <activity
+            android:name=".Quran_PDF"
+            android:exported="false" />
+        <activity
+            android:name=".NoticeList"
+            android:exported="false" />
+        <activity
+            android:name=".Notice_Details_View"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.notice.Notice_Write"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.notice.NoticeAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.Main_Admin_Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Admin.Login"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -2,6 +2,10 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Khadimuddin" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">#171E20</item>
+    </style>
+    <style name="ThemeOverlay.Khadimuddin.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_900</item>
+        <item name="fullscreenTextColor">@color/light_blue_A400</item>
     </style>
 </resources>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Notice_Details_View"
+    android:orientation="vertical"
+    android:background="@drawable/main_back"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/shadow_back"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_70sdp"
+
+        >
+
+        <TextView
+            android:id="@+id/details_datetv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="তারিখঃ "
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="@dimen/_20ssp"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+
+        <View
+            android:id="@+id/viewicon"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="#1E2B31"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/twolay"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            >
+
+            <TextView
+                android:id="@+id/details_noticetv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ggegergjnsgyusehgnskgm regishugegerskgm serughgsregkmegeriuhgesi\nfihdf7yfhwefwjnfweuifhef\n "
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="@dimen/_20ssp"
+                android:paddingBottom="@dimen/_10sdp"
+                />
+
+
+        </ScrollView>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

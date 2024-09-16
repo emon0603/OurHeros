@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.AllPeople.People_Input_activity"
+    android:orientation="vertical"
+    android:background="@drawable/main_back"
+    android:gravity="center"
+    >
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:src="@drawable/profile_user"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#707070"
+
+        />
+    
+    
+    
+
+        <EditText
+            android:id="@+id/edname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shadow_back"
+            android:hint="এখানে আপনার নাম লিখুন"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:inputType="textMultiLine"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+
+            />
+
+    <EditText
+        android:id="@+id/edfathername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow_back"
+        android:hint="এখানে আপনার বাবার নাম লিখুন"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:inputType="textMultiLine"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        />
+
+    <EditText
+        android:id="@+id/ednumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow_back"
+        android:hint="01*****"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:inputType="phone"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+
+        />
+
+
+
+
+    <Button
+        android:id="@+id/inputbt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#313B3E"
+        android:text="ইনপুট"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:inputType="textMultiLine"
+        android:layout_marginRight="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

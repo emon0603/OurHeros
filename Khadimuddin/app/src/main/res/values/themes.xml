@@ -2,8 +2,26 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Khadimuddin" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+            <item name="colorPrimary">#171E20</item>
+            <item name="colorPrimaryDark">#171E20</item>
+        <!--<item name="colorAccent">@color/color_accent</item>-->
+        <!--<item name="android:statusBarColor">@color/color_primary</item>-->
+
+</style>
+
+
+
 
     <style name="Theme.Khadimuddin" parent="Base.Theme.Khadimuddin" />
+    <style name="Theme.Khadimuddin.Fullscreen" parent="Theme.Khadimuddin">
+        <item name="android:actionBarStyle">@style/Widget.Theme.Khadimuddin.ActionBar.Fullscreen
+        </item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+    </style>
+
+    <style name="ThemeOverlay.Khadimuddin.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
 </resources>
